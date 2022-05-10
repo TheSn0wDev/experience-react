@@ -21,7 +21,7 @@ function Account() {
 
         <Grid>
             <Grid.Col span={6} offset={3}>
-                <UserCard avatar={"/sarochar.jpeg"} job={"AER des familles"} name={"Léo Sarochar"} stats={stats1} image={"https://images.unsplash.com/photo-1517336714731-489689fd1ca8?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=726&q=80"} />
+                <UserCard avatar={"/sarochar.jpeg"} job={"AER des familles"} name={ localStorage.getItem('username') } stats={stats1} image={"https://images.unsplash.com/photo-1517336714731-489689fd1ca8?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=726&q=80"} />
             </Grid.Col>
         </Grid>
     </AppShell>);

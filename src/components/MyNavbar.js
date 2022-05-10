@@ -92,7 +92,7 @@ export default function Notification() {
             </Navbar.Section>
             <Navbar.Section>
                 <Group direction="column" align="center" spacing={0}>
-                    <NavbarLink icon={Logout} label="Logout" />
+                    <NavbarLink icon={Logout} label="Logout" onClick={() => { localStorage.removeItem('username'); localStorage.removeItem('email'); navigate('/') }}/>
                 </Group>
             </Navbar.Section>
         </Navbar>

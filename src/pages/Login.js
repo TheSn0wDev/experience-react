@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useRef} from 'react';
 import {
     TextInput,
     PasswordInput,
@@ -10,9 +10,28 @@ import {
     Button,
 } from '@mantine/core';
 import { useNavigate } from "react-router-dom";
+import axios from "axios";
 
 function Login() {
     const navigate = useNavigate();
+    const email = useRef(null);
+    const password = useRef(null);
+
+    const handleLogin = () => {
+        axios.get('/api/dashboard/email', {
+            params: {
+                email: email.current.value,
+                password: password.current.value,
+            }
+        }).then((data) => {
+            console.log(JSON.parse(JSON.stringify(data.data))[0]);
+            localStorage.setItem('email', JSON.parse(JSON.stringify(data.data))[0].email);
+            localStorage.setItem('username', JSON.parse(JSON.stringify(data.data))[0].username);
+            navigate('/dashboard');
+        }).catch(() => {
+            console.log("Error: wrong email or password");
+        });
+    }
 
     return (<Container size={420} my={40}>
         <Title
@@ -29,9 +48,9 @@ function Login() {
         </Text>
 
         <Paper withBorder shadow="md" p={30} mt={30} radius="md">
-            <TextInput label="Email" placeholder="you@mantine.dev" required />
-            <PasswordInput label="Password" placeholder="Your password" required mt="md" />
-            <Button fullWidth mt="xl">
+            <TextInput label="Email" placeholder="you@mantine.dev" required ref={email}/>
+            <PasswordInput label="Password" placeholder="Your password" required mt="md" ref={password}/>
+            <Button fullWidth mt="xl" onClick={ handleLogin }>
                 Sign in
             </Button>
         </Paper>

@@ -33,7 +33,7 @@ function getStrength(password) {
     return Math.max(100 - (100 / (requirements.length + 1)) * multiplier, 0);
 }
 
-export function PasswordStrength() {
+export function PasswordStrength({ref: myRef}) {
     const [value, setValue] = useInputState('');
     const strength = getStrength(value);
     const checks = requirements.map((requirement, index) => (
@@ -62,6 +62,7 @@ export function PasswordStrength() {
                 label="Password"
                 required
                 mt="md"
+                ref={myRef}
             />
 
             <Group spacing={5} grow mt="xs" mb="md">
