@@ -13,6 +13,19 @@ The goal of this project is to discover the ReactJS framework by creating a simp
 
 I used ReactJS from the official documentation.
 
+## Install
+
+```sh
+git clone https://github.com/Sn00ww/experience-react
+```
+
+## Usage
+
+```sh
+npm i
+npm run start
+```
+
 ## Author
 
 👤 **Sn0w**
